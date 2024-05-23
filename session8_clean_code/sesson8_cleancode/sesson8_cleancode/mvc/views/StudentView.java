@@ -41,4 +41,24 @@ public class StudentView {
             System.out.println("Thêm mới thất bại");
         }
     }
+    public  void displayAllStudent(Student[] students) {
+        System.out.println("Danh sash hoc sinh: ");
+        for(Student student : students) {
+            System.out.println("Code: " + student.getCode() + " Name: " + student.getName());
+        }
+    }
+    private String infoStudent(Student student) {
+        System.out.println();
+    }
+    public int inputCode() {
+        System.out.println("Nhap code: ");
+        Scanner scanner = new Scanner(System.in);
+        return Integer.parseInt(scanner.nextLine());
+    }
+    public void displayMessageNotFound(){
+        System.out.println("Khong tim thay hoc sinh!");
+    }
+    public boolean confirmDelete(Student student) {
+        System.out.println("Xac nhan xoa hoc sinh co ma " + student.getCode() + "Y: xac nhan. N: huy");
+    }
 }

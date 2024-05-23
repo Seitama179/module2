@@ -18,4 +18,14 @@ public class StudentService implements IStudentService {
         studentRepository.add(student);
         return true;
     }
+    @Override
+    public Student getAll(){
+        return studentRepository.getAll();
+    }
+
+    @Override
+    public Student findByCode(int code) {
+
+        return null;
+    }
 }

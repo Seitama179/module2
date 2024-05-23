@@ -13,13 +13,16 @@ public class Main {
         double averageSalary = getAverageSalary(staff);
         System.out.println("Luong trung binh la: " + averageSalary);
         System.out.println("Cac nhan vien full time co muc luong duoi trung binh: ");
-        underAverage(staff, averageSalary);
+        getFTUnderAverageSalary(staff);
         System.out.println("Tong tien luong tra cho nhan vien part time: " + getTotalPartTimeSalary(staff));
         sortFullTimeBySalary(staff);
         System.out.println("Sap xep nhan vien full time theo muc luong tang dan: ");
-        for(Staff staff1 : staff ){
-            if(staff1 instanceof FulltimeStaff){
-                FulltimeStaff fullTimeStaff = (FulltimeStaff) staff1;
+        getFTSSortBySalary(staff);
+    }
+
+    private static void getFTSSortBySalary(Staff[] staff) {
+        for(Staff staff1 : staff){
+            if(staff1 instanceof FulltimeStaff fullTimeStaff){
                 System.out.println(fullTimeStaff.getName() + ", luong: " + fullTimeStaff.getSalary());
             }
         }
@@ -29,9 +32,9 @@ public class Main {
         for (int i = 0; i < staff.length -1; i++) {
             for (int j = 0; j < staff.length - i -1; j++) {
                 if(staff[i] instanceof FulltimeStaff && staff[j] instanceof FulltimeStaff) {
-                    FulltimeStaff fts1 = (FulltimeStaff) staff[i];
-                    FulltimeStaff fts2 = (FulltimeStaff) staff[j];
-                    if(fts1.getSalary() < fts2.getSalary()) {
+                    FulltimeStaff fulltimeStaff1 = (FulltimeStaff) staff[i];
+                    FulltimeStaff fulltimeStaff2 = (FulltimeStaff) staff[j];
+                    if(fulltimeStaff1.getSalary() < fulltimeStaff2.getSalary()) {
                         Staff temp = staff[i];
                         staff[i] = staff[j];
                         staff[j] = temp;
@@ -52,10 +55,10 @@ public class Main {
         return totalPartTimeSalary;
     }
 
-    private static void underAverage(Staff[] staff, double averageSalary) {
+    private static void getFTUnderAverageSalary(Staff[] staff) {
         for(Staff staff1 : staff) {
             if(staff1 instanceof FulltimeStaff fullTimeStaff) {
-                if(fullTimeStaff.getSalary() < averageSalary) {
+                if(fullTimeStaff.getSalary() < getAverageSalary(staff)) {
                     System.out.println(fullTimeStaff.getName() + ", ma nhan vien " + fullTimeStaff.getId());
                 }
             }

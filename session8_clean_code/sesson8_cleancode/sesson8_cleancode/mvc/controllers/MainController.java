@@ -25,9 +25,25 @@ public class MainController {
                 case 2: {
                     break;
                 }
+                case 3: {
+                    int code = studentView.inputCode();
+                    student = studentService.findByCode(code);
+                    if(student == null) {
+                        studentView.displayMesseageNotFound();
+                    } else {
+                        boolean isConfirm()
+                    }
+                break;
+                }
+                case 4: {
+                    Student[] students = studentService.getAll();
+                    studentView.displayAllStudent(students);
+                    break;
+                }
                 case 0:
                     return;
             }
+            System.out.println();
         }
     }
 }

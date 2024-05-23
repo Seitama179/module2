@@ -2,6 +2,8 @@ package sesson8_cleancode.mvc.repositories;
 
 import sesson8_cleancode.mvc.models.Student;
 
+import java.util.Arrays;
+
 public class StudentRepository {
     private static Student[] students = new Student[100];
     private static int count = 0;
@@ -14,5 +16,9 @@ public class StudentRepository {
     public void add(Student student) {
         students[count] = student;
         count++;
+    }
+    public students[] getAll() {
+        Student[] result = Arrays.copyOf(students, count);
+        return result;
     }
 }
