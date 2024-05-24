@@ -1,17 +1,32 @@
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Stack;
+
 public class ArrayReverse {
-    public static void main(String[] args) {
-        int[] arr = {1, 2, 3, 4, 5};
+    public static void reverseArray(int[] arr) {
+        Stack<Integer> stack = new Stack<>();
 
-        System.out.println("Mảng ban đầu:");
         for (int num : arr) {
-            System.out.print(num + " ");
+            stack.push(num);
         }
-
-        System.out.println("\nMảng sau khi đảo ngược:");
-        MyArray.reverseArray(arr);
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = stack.pop();
+        }
         for (int num : arr) {
             System.out.print(num + " ");
         }
     }
-
+    public static void reverseString(String str) {
+        Stack<String> stack = new Stack<>();
+        String[] words = str.split(" ");
+        for(String word : words) {
+            stack.push(word);
+        }
+        List<String> reversedWords = new ArrayList<>();
+        while (!stack.isEmpty()) {
+            reversedWords.add(stack.pop());
+        }
+        System.out.println(reversedWords);
+    }
 }
