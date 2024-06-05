@@ -1,7 +1,11 @@
-package sesson8_cleancode.mvc.services;
+package session8_cleancode.mvc.services;
 
-import sesson8_cleancode.mvc.models.Student;
+import session8_cleancode.mvc.models.Student;
 
-public interface IStudentService{
-    boolean add(Student student);
+import java.util.List;
+
+public interface IStudentService extends IService<Student>{
+
+
+
 }

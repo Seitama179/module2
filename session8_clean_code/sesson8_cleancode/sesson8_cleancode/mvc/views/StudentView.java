@@ -1,7 +1,8 @@
-package sesson8_cleancode.mvc.views;
+package session8_cleancode.mvc.views;
 
-import sesson8_cleancode.mvc.models.Student;
+import session8_cleancode.mvc.models.Student;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class StudentView {
@@ -12,6 +13,7 @@ public class StudentView {
         System.out.println("2. Edit student");
         System.out.println("3. Delete student");
         System.out.println("4. Display all student");
+        System.out.println("5. Search Student by Name");
         System.out.println("0. End program");
         System.out.print("Input your choice: ");
         Scanner scanner = new Scanner(System.in);
@@ -36,29 +38,43 @@ public class StudentView {
 
     public void viewMessage(boolean result) {
         if(result) {
-            System.out.println("Thêm mới thành công");
+            System.out.println("Tác vụ thành công");
         } else {
-            System.out.println("Thêm mới thất bại");
+            System.out.println("Tác vụ thất bại");
         }
     }
-    public  void displayAllStudent(Student[] students) {
-        System.out.println("Danh sash hoc sinh: ");
-        for(Student student : students) {
-            System.out.println("Code: " + student.getCode() + " Name: " + student.getName());
+
+    public void displayAllStudent(List<Student> students) {
+        System.out.println("Danh sách học sinh: ");
+        for (Student student: students) {
+            System.out.println(infoStudent(student));
         }
     }
+
     private String infoStudent(Student student) {
-        System.out.println();
+        return "Code: " + student.getCode() +", name: "+ student.getName();
     }
+
     public int inputCode() {
-        System.out.println("Nhap code: ");
         Scanner scanner = new Scanner(System.in);
+        System.out.print("Mời bạn nhập mã học sinh: ");
         return Integer.parseInt(scanner.nextLine());
+
     }
-    public void displayMessageNotFound(){
-        System.out.println("Khong tim thay hoc sinh!");
-    }
+
     public boolean confirmDelete(Student student) {
-        System.out.println("Xac nhan xoa hoc sinh co ma " + student.getCode() + "Y: xac nhan. N: huy");
+        System.out.println("Bạn có muốn xóa học sinh có mã "+ student.getCode() +". Bấm Y để xác nhận, N để huỷ");
+        Scanner scanner = new Scanner(System.in);
+        String confirm = scanner.nextLine();
+        if(confirm.equals("Y")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public String inputName() {
+        System.out.print("Nhập tên: ");
+        return new Scanner(System.in).nextLine();
     }
 }

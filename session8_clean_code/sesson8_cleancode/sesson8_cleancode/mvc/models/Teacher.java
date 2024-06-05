@@ -1,4 +1,4 @@
-package sesson8_cleancode.mvc.models;
+package session8_cleancode.mvc.models;
 
-public class Teacher {
+public class Teacher extends Person{
 }

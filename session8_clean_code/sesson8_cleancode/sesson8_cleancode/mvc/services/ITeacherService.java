@@ -1,4 +1,10 @@
-package sesson8_cleancode.mvc.services;
+package session8_cleancode.mvc.services;
 
-public interface ITeacherService {
+import session8_cleancode.mvc.models.Student;
+import session8_cleancode.mvc.models.Teacher;
+
+import java.util.List;
+
+public interface ITeacherService extends IService<Teacher>{
+
 }

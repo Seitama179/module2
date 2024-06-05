@@ -1,4 +1,4 @@
-package sesson8_cleancode.mvc.models;
+package session8_cleancode.mvc.models;
 
 public abstract class Person {
     private int code;

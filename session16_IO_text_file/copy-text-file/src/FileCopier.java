@@ -9,7 +9,6 @@ public class FileCopier {
             System.out.print("Input target file's path: ");
             String targetFilePath = scanner.nextLine();
             copyFile(sourceFilePath, targetFilePath);
-
             scanner.close();
 
     }

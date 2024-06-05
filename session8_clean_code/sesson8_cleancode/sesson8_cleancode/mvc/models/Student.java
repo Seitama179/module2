@@ -1,6 +1,8 @@
-package sesson8_cleancode.mvc.models;
+package session8_cleancode.mvc.models;
 
-public class Student extends Person{
+import java.util.Objects;
+
+public class Student extends Person {
     private String classroom;
 
     public Student() {
@@ -18,4 +20,25 @@ public class Student extends Person{
     public void setClassroom(String classroom) {
         this.classroom = classroom;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Student student = (Student) o;
+        return Objects.equals(classroom, student.classroom);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(classroom);
+    }
+
+//    @Override
+//    public int compareTo(Student o) {
+//        return (this.getName().compareTo(o.getName()));
+//      if(this.point < o.point) {
+//          return 1;
+//      }
+//    }
 }

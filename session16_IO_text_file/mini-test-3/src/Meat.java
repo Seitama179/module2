@@ -23,6 +23,7 @@ public class Meat extends Material {
     public LocalDate getExpireDate() {
         return getManufactureDate().plusDays(7);
     }
+
     @Override
     public double getRealMoney(){
         long daysUntilExpiry = LocalDate.now().until(getExpireDate()).getDays();

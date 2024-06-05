@@ -1,9 +1,11 @@
-package sesson8_cleancode.mvc.controllers;
+package session8_cleancode.mvc.controllers;
 
-import sesson8_cleancode.mvc.models.Student;
-import sesson8_cleancode.mvc.services.IStudentService;
-import sesson8_cleancode.mvc.services.impl.StudentService;
-import sesson8_cleancode.mvc.views.StudentView;
+import session8_cleancode.mvc.models.Student;
+import session8_cleancode.mvc.services.IStudentService;
+import session8_cleancode.mvc.services.impl.StudentService;
+import session8_cleancode.mvc.views.StudentView;
+
+import java.util.List;
 
 public class MainController {
 
@@ -13,6 +15,7 @@ public class MainController {
         int choice;
         Student student;
         boolean result;
+        List<Student> students;
         while (true) {
             choice = studentView.view();
             switch (choice) {
@@ -25,21 +28,27 @@ public class MainController {
                 case 2: {
                     break;
                 }
-                case 3: {
+                case 3:
                     int code = studentView.inputCode();
                     student = studentService.findByCode(code);
                     if(student == null) {
-                        studentView.displayMesseageNotFound();
+                        studentView.viewMessage(false);
                     } else {
-                        boolean isConfirm()
+                        boolean isConfirm = studentView.confirmDelete(student);
+                        if(isConfirm) {
+                            studentService.removeStudent(student);
+                            studentView.viewMessage(true);
+                        }
                     }
-                break;
-                }
-                case 4: {
-                    Student[] students = studentService.getAll();
+                    break;
+                case 4:
+                     students = studentService.getAll();
                     studentView.displayAllStudent(students);
                     break;
-                }
+                case 5:
+                    String name = studentView.inputName();
+                    students = studentService.searchByName(name);
+                    studentView.displayAllStudent(students);
                 case 0:
                     return;
             }
